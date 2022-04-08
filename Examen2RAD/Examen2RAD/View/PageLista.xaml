@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:convertidor="clr-namespace:Examen2RAD.Convertidor"
+             x:Class="Examen2RAD.View.PageLista">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convertidor:Convertidor x:Key="bytetoimage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            
+           
+                <StackLayout>
+                    <CollectionView x:Name="ListaPagos"
+                            SelectionMode="Single"
+                            SelectionChanged="ListaPagos_SelectionChanged">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout 
+                        Orientation="Vertical"
+                                       ItemSpacing="10"/>
+
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Editar"
+                                               x:Name="editar"
+                                               CommandParameter="{Binding . }"
+                                               Clicked="editar_Clicked"/>
+                                            <SwipeItem Text="Eliminar"
+                                               x:Name="eliminar"
+                                               CommandParameter="{Binding .}"
+                                               Clicked="eliminar_Clicked"/>
+
+
+                                        </SwipeItems>
+
+                                    </SwipeView.RightItems>
+                                    <StackLayout>
+                                        <Label Text="{Binding Id_pago}"/>
+                                        <Image Source="{Binding  Phpto_recibo, Converter={StaticResource bytetoimage}}"/>
+                                        <Label Text="{Binding Descripcion }"/>
+                                        <Label Text="{Binding Monto}"/>
+                                        <Label Text="{Binding Fecha }"/>
+
+
+
+                                    </StackLayout>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
