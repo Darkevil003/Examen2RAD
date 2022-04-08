@@ -18,7 +18,7 @@ namespace Examen2RAD.View
     public partial class PagePagos : ContentPage
     {
         Plugin.Media.Abstractions.MediaFile photo = null;
-        Pagos _pagos;
+        
         public PagePagos()
         {
             InitializeComponent();
